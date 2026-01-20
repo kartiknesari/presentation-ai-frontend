@@ -32,12 +32,21 @@ export default function SessionView({
     const [slideNumber, setSlideNumber] = useState<number>(1);
     const remoteParticipants = useRemoteParticipants();
     const room = useRoomContext();
-    const isMicMuted = useIsMuted(Track.Source.Microphone, {
-        participant: room.localParticipant
-    });
 
     // Get video track from ANAM agent
     const tracks = useTracks([Track.Source.Camera]);
+    const micTracks = useTracks([
+        { source: Track.Source.Microphone, withPlaceholder: true }
+    ]);
+    const localMicTrack = micTracks.find(
+        (track) => track.participant.identity === room.localParticipant.identity
+    );
+    const isMicMuted = useIsMuted(
+        localMicTrack ?? {
+            participant: room.localParticipant,
+            source: Track.Source.Microphone
+        }
+    );
     const anamVideoTrack = tracks.find(
         (track) => track.participant.identity !== room.localParticipant.identity
     );
@@ -209,9 +218,9 @@ export default function SessionView({
                         showIcon={true}
                         className="hover:bg-slate-500 hover:text-white hover:p-2 hover:rounded-lg"
                     />
-                    {/* <span className="text-sm text-white w-12">
+                    <span className="text-sm text-white w-12">
                         {isMicMuted ? "Unmute" : "Mute"}
-                    </span> */}
+                    </span>
                 </div>
 
                 <DisconnectButton className="px-4 py-2 rounded bg-red-600 hover:bg-red-700 text-white font-medium transition-colors">
