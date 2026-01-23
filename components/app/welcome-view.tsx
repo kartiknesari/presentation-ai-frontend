@@ -241,7 +241,7 @@ export default function WelcomeView({ onPresentationStart }: WelcomeViewProps) {
                         </div>
 
                         <a
-                            href="#"
+                            href="https://infographicfe.vercel.app/"
                             className="h-12 w-full rounded-lg px-5 font-semibold transition-all
                                bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl
                                flex items-center justify-center"
