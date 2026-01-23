@@ -228,7 +228,7 @@ export default function WelcomeView({ onPresentationStart }: WelcomeViewProps) {
                     </section>
 
                     {/* Vertical Divider */}
-                    <div className="w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent self-stretch"></div>
+                    <div className="w-px bg-linear-to-b from-transparent via-gray-300 to-transparent self-stretch"></div>
 
                     <section className="flex flex-1 flex-col items-center justify-center p-12">
                         <div className="text-center mb-8">
@@ -245,6 +245,7 @@ export default function WelcomeView({ onPresentationStart }: WelcomeViewProps) {
                             className="h-12 w-full rounded-lg px-5 font-semibold transition-all
                                bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl
                                flex items-center justify-center"
+                            target="_blank"
                         >
                             Generate Visualization →
                         </a>
